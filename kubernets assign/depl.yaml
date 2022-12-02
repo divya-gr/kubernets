@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-proj
+  labels:
+    app: django
+spec:
+  selector:
+    matchLabels:
+      app: django
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: django
+    spec:
+      containers:
+      - name: divya
+        image: divya260802/djangoproject:latest
+        ports:
+        - containerPort: 8000
