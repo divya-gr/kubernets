@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-proj
+  namespace: ingress-nginx
+  labels:
+    app: django
+spec:
+  selector:
+    matchLabels:
+      app: django
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: django
+    spec:
+      containers:
+      - name: divya
+        image: djangoproject:1.1
+        ports:
+        - containerPort: 8000
